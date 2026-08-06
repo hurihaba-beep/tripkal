@@ -1,0 +1,27 @@
+{
+  "name": "מארגן הטיולים שלי",
+  "short_name": "מארגן טיולים",
+  "description": "כלי לתכנון טיולים משותף - תקציב, טיסות, מלונות, אטרקציות ומפה",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f1f5f9",
+  "theme_color": "#d4a017",
+  "lang": "he",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
