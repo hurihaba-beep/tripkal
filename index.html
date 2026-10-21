@@ -379,7 +379,7 @@
         html.a11y-contrast #a11yPanel button.on{background:#1d4ed8!important;color:#fff!important}
         html.a11y-gray body{filter:grayscale(1)}
         html.a11y-links a{text-decoration:underline!important;background:#ffff00!important;color:#000!important;font-weight:bold}
-        html.a11y-font body,html.a11y-font button,html.a11y-font input,html.a11y-font select,html.a11y-font textarea{font-family:Arial,Helvetica,sans-serif!important;letter-spacing:.03em}
+        html.a11y-readable body,html.a11y-readable button,html.a11y-readable input,html.a11y-readable select,html.a11y-readable textarea{font-family:Arial,Helvetica,sans-serif!important;letter-spacing:.03em}
         html.a11y-noanim *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
         @media print{.fab-wrap,#a11yPanel,#iosInstallModal{display:none!important}}
     </style>
@@ -2177,7 +2177,7 @@
 })();
 </script>
 
-<div style="text-align:center; font-size:0.7em; color:#94a3b8; padding:10px;">גרסת קוד: 2026-08-07-v19</div>
+<div style="text-align:center; font-size:0.7em; color:#94a3b8; padding:10px;">גרסת קוד: 2026-08-07-v20</div>
 <div class="fab-wrap" id="fabWrap">
   <button type="button" class="fab-btn install" id="installBtn" style="display:none" onclick="installApp()" aria-label="התקן כאפליקציה" title="התקן כאפליקציה">📲</button>
   <button type="button" class="fab-btn" onclick="toggleA11yPanel()" aria-label="תפריט נגישות" aria-expanded="false" id="a11yFab" title="נגישות">♿</button>
@@ -2189,7 +2189,7 @@
   <button type="button" data-k="contrast" onclick="a11yToggle('contrast')">◐ ניגודיות גבוהה</button>
   <button type="button" data-k="gray" onclick="a11yToggle('gray')">⬛ גווני אפור</button>
   <button type="button" data-k="links" onclick="a11yToggle('links')">🔗 הדגשת קישורים</button>
-  <button type="button" data-k="font" onclick="a11yToggle('font')">🅰️ גופן קריא</button>
+  <button type="button" data-k="readable" onclick="a11yToggle('readable')">🅰️ גופן קריא</button>
   <button type="button" data-k="noanim" onclick="a11yToggle('noanim')">⏸️ עצירת אנימציות</button>
   <button type="button" onclick="a11yReset()" style="background:#fee2e2">↺ איפוס</button>
   <a href="#" onclick="return false" style="display:none"></a>
@@ -2204,11 +2204,11 @@
 <script>
 (function(){
   var root=document.documentElement, KEY='tripkal_a11y', st={font:0};
-  function load(){try{var s=localStorage.getItem(KEY);if(s)st=JSON.parse(s)||{font:0};}catch(e){}}
+  function load(){try{var s=localStorage.getItem(KEY);if(s)st=JSON.parse(s)||{font:0};if(typeof st.font!=='number')st.font=0;}catch(e){}}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(st));}catch(e){}}
   function apply(){
     root.style.fontSize=(100+(st.font||0)*10)+'%';
-    ['contrast','gray','links','font','noanim'].forEach(function(k){root.classList.toggle('a11y-'+k,!!st[k]);});
+    ['contrast','gray','links','readable','noanim'].forEach(function(k){root.classList.toggle('a11y-'+k,!!st[k]);});
     document.querySelectorAll('#a11yPanel button[data-k]').forEach(function(b){b.classList.toggle('on',!!st[b.dataset.k]);});
   }
   window.a11yFont=function(d){st.font=Math.max(-2,Math.min(5,(st.font||0)+d));save();apply();};
